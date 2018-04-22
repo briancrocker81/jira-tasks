@@ -107,7 +107,8 @@ class Branch
     else
       Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} checkout master"
       Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} fetch origin"
-      Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} checkout -b #{@new_branch}".colorize(:yellow)
+      Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} pull"
+      Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} checkout -b #{@new_branch}"
     end
   end
 
