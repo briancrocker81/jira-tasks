@@ -83,7 +83,7 @@ class Branch
     # @branch_type = branch_type
     @branch_type = branch_type.downcase
     if @branch_type == 'b' || @branch_type == 'bug'
-      @branch_type = 'bug'
+      @branch_type = 'bugfix'
     elsif @branch_type == 'f' || @branch_type == 'feature'
       @branch_type = 'feature'
     else

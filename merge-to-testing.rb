@@ -9,9 +9,15 @@ def merge_to_testing(branch = '')
     puts 'Enter branch details'.colorize(:yellow)
     branch = gets.chomp
   end
+  # def sys_cmd(git_cmd)
+  #   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} #{git_cmd}"
+  # end
+  # args = ["fetch origin", "checkout testing", "pull", "reset --hard origin/testing", ""]
+  # puts sys_cmd("fetch origin")
 
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} fetch origin"
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} checkout testing"
+  Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} pull"
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} reset --hard origin/testing"
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} merge --no-ff #{branch}"
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} push origin testing"
@@ -20,6 +26,7 @@ end
 def merge_up(branch)
   branch = branch
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} fetch origin"
+  Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} pull"
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} checkout #{branch}"
   Kernel::system "git --git-dir=#{$path_repo}/.git --work-tree=#{$path_repo} merge origin/master"
 
